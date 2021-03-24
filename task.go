@@ -35,8 +35,8 @@ func (c *Client) GetTaskByReference(projectID int, reference string) (Task, erro
 		Client: c,
 		Method: "getTaskByReference",
 		Params: struct {
-			ProjectID    int    `json:"project_id"`
-			Reference string    `json:"reference"`
+			ProjectID int    `json:"project_id"`
+			Reference string `json:"reference"`
 		}{
 			ProjectID: projectID,
 			Reference: reference,
@@ -226,49 +226,49 @@ type MoveTaskParams struct {
 
 // Task type
 type Task struct {
-	ID                  int    `json:"id,string,omitempty"`
-	ProjectID           int    `json:"project_id,string"`
-	ColorID             string `json:"color_id,omitempty"`
-	ColumnID            int    `json:"column_id,string,omitempty"`
-	OwnerID             int    `json:"owner_id,string,omitempty"`
-	CreatorID           int    `json:"creator_id,omitempty"`
-	DateDue             int    `json:"date_due,string,omitempty"`
-	Reference           string `json:"reference"`
-	Title               string `json:"title"`
-	Description         string `json:"description"`
-	DateCreation        int    `json:"date_creation,string"`
-	DateCompleted       int    `json:"date_completed,string"`
-	DateModification    int    `json:"date_modification,string"`
-	DateStarted         int    `json:"date_started,string"`
-	TimeEstimated       int    `json:"time_estimated,string"`
-	TimeSpent           int    `json:"time_spend,string"`
-	Position            int    `json:"position,string"`
-	IsActive            int    `json:"is_active,string"`
-	Score               int    `json:"score,string"`
-	CategoryID          int    `json:"category_id,string"`
-	SwimlaneID          int    `json:"swimlane_id,string,omitempty"`
-	DateMoved           int    `json:"date_moved"`
-	RecurrenceStatus    int    `json:"recurrence_status,string"`
-	RecurrenceTrigger   int    `json:"recurrence_trigger,string"`
-	RecurrenceFactor    int    `json:"recurrence_factor,string"`
-	RecurrenceTimeframe int    `json:"recurrence_timeframe,string"`
-	RecurrenceBaseDate  int    `json:"recurrence_basedate,string"`
-	RecurrenceParent    int    `json:"recurrence_parent,string"`
-	RecurrenceChild     int    `json:"recurrence_child,string"`
-	CategoryName        string `json:"category_name"`
-	ProjectName         string `json:"project_name"`
-	DefaultSwimlane     string `json:"default_swimlane"`
-	ColumnTitle         string `json:"column_title"`
-	AssigneeUsername    string `json:"assignee_username"`
-	AssigneeName        string `json:"assignee_name"`
-	CreatorUsername     string `json:"creator_username"`
-	CreatorName         string `json:"creator_name"`
-	NbComments          int    `json:"nb_comments,string"`
-	NbFiles             int    `json:"nb_files,string"`
-	NbSubtasks          int    `json:"nb_subtasks,string"`
-	NbCompletedSubtasks int    `json:"nb_completed_subtasks,string"`
-	NbLinks             int    `json:"nb_links,string"`
-	Color               Color  `json:"color"`
+	ID                  json.Number `json:"id,string,omitempty"`
+	ProjectID           json.Number `json:"project_id,string"`
+	ColorID             string      `json:"color_id,omitempty"`
+	ColumnID            json.Number `json:"column_id,string,omitempty"`
+	OwnerID             json.Number `json:"owner_id,string,omitempty"`
+	CreatorID           json.Number `json:"creator_id,omitempty"`
+	DateDue             json.Number `json:"date_due,string,omitempty"`
+	Reference           string      `json:"reference"`
+	Title               string      `json:"title"`
+	Description         string      `json:"description"`
+	DateCreation        json.Number `json:"date_creation,string"`
+	DateCompleted       json.Number `json:"date_completed,string"`
+	DateModification    json.Number `json:"date_modification,string"`
+	DateStarted         json.Number `json:"date_started,string"`
+	TimeEstimated       json.Number `json:"time_estimated,string"`
+	TimeSpent           json.Number `json:"time_spend,string"`
+	Position            json.Number `json:"position,string"`
+	IsActive            json.Number `json:"is_active,string"`
+	Score               json.Number `json:"score,string"`
+	CategoryID          json.Number `json:"category_id,string"`
+	SwimlaneID          json.Number `json:"swimlane_id,string,omitempty"`
+	DateMoved           json.Number `json:"date_moved"`
+	RecurrenceStatus    json.Number `json:"recurrence_status,string"`
+	RecurrenceTrigger   json.Number `json:"recurrence_trigger,string"`
+	RecurrenceFactor    json.Number `json:"recurrence_factor,string"`
+	RecurrenceTimeframe json.Number `json:"recurrence_timeframe,string"`
+	RecurrenceBaseDate  json.Number `json:"recurrence_basedate,string"`
+	RecurrenceParent    json.Number `json:"recurrence_parent,string"`
+	RecurrenceChild     json.Number `json:"recurrence_child,string"`
+	CategoryName        string      `json:"category_name"`
+	ProjectName         string      `json:"project_name"`
+	DefaultSwimlane     string      `json:"default_swimlane"`
+	ColumnTitle         string      `json:"column_title"`
+	AssigneeUsername    string      `json:"assignee_username"`
+	AssigneeName        string      `json:"assignee_name"`
+	CreatorUsername     string      `json:"creator_username"`
+	CreatorName         string      `json:"creator_name"`
+	NbComments          json.Number `json:"nb_comments,string"`
+	NbFiles             json.Number `json:"nb_files,string"`
+	NbSubtasks          json.Number `json:"nb_subtasks,string"`
+	NbCompletedSubtasks json.Number `json:"nb_completed_subtasks,string"`
+	NbLinks             json.Number `json:"nb_links,string"`
+	Color               Color       `json:"color"`
 }
 
 func (r *request) decodeTasks() ([]Task, error) {
