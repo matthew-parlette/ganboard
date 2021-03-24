@@ -30,13 +30,16 @@ func (c *Client) GetTask(taskID int) (Task, error) {
 }
 
 // GetTaskByReference https://docs.kanboard.org/en/latest/api/task_procedures.html#gettaskbyreference
-func (c *Client) GetTaskByReference(taskID int, reference string) (Task, error) {
+func (c *Client) GetTaskByReference(projectID int, reference string) (Task, error) {
 	query := request{
 		Client: c,
 		Method: "getTaskByReference",
 		Params: struct {
 			ProjectID    int    `json:"project_id"`
 			Reference string    `json:"reference"`
+		}{
+			ProjectID: projectID,
+			Reference: reference,
 		},
 	}
 	response, err := query.decodeTask()
