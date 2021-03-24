@@ -35,11 +35,8 @@ func (c *Client) GetTaskByReference(taskID int, reference string) (Task, error) 
 		Client: c,
 		Method: "getTaskByReference",
 		Params: struct {
-			TaskID    int    `json:"task_id"`
-			Reference string `json:"reference"`
-		}{
-			TaskID:    taskID,
-			Reference: reference,
+			ProjectID    int    `json:"project_id"`
+			Reference string    `json:"reference"`
 		},
 	}
 	response, err := query.decodeTask()
