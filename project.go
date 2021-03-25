@@ -156,26 +156,18 @@ type ProjectParams struct {
 
 // Project reflects getAllProjects method
 type Project struct {
-	ID                  int    `json:"id,string"`
-	Name                string `json:"name"`
-	IsActive            int    `json:"is_active,string"`
-	Token               string `json:"token"`
-	LastModified        int    `json:"last_modified,string"`
-	IsPublic            int    `json:"is_public,string"`
-	IsPrivate           int    `json:"is_private,string"`
-	DefaultSwimlane     string `json:"default_swimlane"`
-	ShowDefaultSwimlane int    `json:"show_default_swimlane,string"`
-	Description         string `json:"description"`
-	Identifier          string `json:"identifier"`
-	Columns             []struct {
-		ID          int    `json:"id,string"`
-		Title       string `json:"title"`
-		Position    int    `json:"position,string"`
-		ProjectID   int    `json:"project_id,string"`
-		TaskLimit   int    `json:"task_limit,string"`
-		Description string `json:"description"`
-	} `json:"columns"`
-	URL struct {
+	ID                  json.Number `json:"id,string"`
+	Name                string      `json:"name"`
+	IsActive            json.Number `json:"is_active,string"`
+	Token               string      `json:"token"`
+	LastModified        json.Number `json:"last_modified,string"`
+	IsPublic            json.Number `json:"is_public,string"`
+	IsPrivate           json.Number `json:"is_private,string"`
+	DefaultSwimlane     string      `json:"default_swimlane"`
+	ShowDefaultSwimlane json.Number `json:"show_default_swimlane,string"`
+	Description         string      `json:"description"`
+	Identifier          string      `json:"identifier"`
+	URL                 struct {
 		Board    string `json:"board"`
 		Calendar string `json:"calendar"`
 		List     string `json:"list"`
