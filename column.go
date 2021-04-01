@@ -93,9 +93,9 @@ func (r *request) decodeColumn() (Column, error) {
 	}
 
 	body := struct {
-		JSONRPC string `json:"jsonrpc"`
-		ID      int    `json:"id"`
-		Result  Column `json:"result"`
+		JSONRPC string      `json:"jsonrpc"`
+		ID      json.Number `json:"id"`
+		Result  Column      `json:"result"`
 	}{}
 
 	err = json.NewDecoder(rsp.Body).Decode(&body)
@@ -109,9 +109,9 @@ func (r *request) decodeColumns() ([]Column, error) {
 	}
 
 	body := struct {
-		JSONRPC string   `json:"jsonrpc"`
-		ID      int      `json:"id"`
-		Result  []Column `json:"result"`
+		JSONRPC string      `json:"jsonrpc"`
+		ID      json.Number `json:"id"`
+		Result  []Column    `json:"result"`
 	}{}
 
 	err = json.NewDecoder(rsp.Body).Decode(&body)
