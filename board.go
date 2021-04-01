@@ -34,15 +34,15 @@ type Board struct {
 
 // Column type
 type Column struct {
-	ID          json.Number `json:"id"`
-	Title       string      `json:"title"`
-	Position    json.Number `json:"int,string"`
-	ProjectID   json.Number `json:"project_id,string"`
-	TaskLimit   json.Number `json:"task_limit,string"`
-	Description string      `json:"description,omitempty"`
-	Tasks       []Task      `json:"tasks"`
-	NbTasks     json.Number `json:"nb_tasks"`
-	Score       json.Number `json:"score"`
+	ID          FlexInt `json:"id"`
+	Title       string  `json:"title"`
+	Position    FlexInt `json:"int,string"`
+	ProjectID   FlexInt `json:"project_id,string"`
+	TaskLimit   FlexInt `json:"task_limit,string"`
+	Description string  `json:"description,omitempty"`
+	Tasks       []Task  `json:"tasks"`
+	NbTasks     FlexInt `json:"nb_tasks"`
+	Score       FlexInt `json:"score"`
 }
 
 func (r *request) decodeBoards() ([]Board, error) {
