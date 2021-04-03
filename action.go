@@ -113,7 +113,7 @@ func (r *request) decodeActions() ([]Action, error) {
 
 	body := struct {
 		JSONRPC string   `json:"jsonrpc"`
-		ID      int      `json:"id"`
+		ID      FlexInt  `json:"id"`
 		Result  []Action `json:"result"`
 	}{}
 
