@@ -74,8 +74,8 @@ func (c *Client) RemoveAction(actionID int) (bool, error) {
 
 // Action type
 type Action struct {
-	ID         int               `json:"id,string"`
-	ProjectID  int               `json:"project_id,string"`
+	ID         FlexInt           `json:"id,string"`
+	ProjectID  FlexInt           `json:"project_id,string"`
 	EventName  string            `json:"event_name"`
 	ActionName string            `json:"action_name"`
 	Params     map[string]string `json:"params"`
