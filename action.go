@@ -36,7 +36,7 @@ func (c *Client) GetCompatibleActionEvents(actionName string) (map[string]string
 }
 
 // GetActions https://docs.kanboard.org/en/latest/api/action_procedures.html#getactions
-func (c *Client) GetActions(projectID int) (Action, error) {
+func (c *Client) GetActions(projectID int) ([]Action, error) {
 	query := request{
 		Client: c,
 		Method: "getActions",
@@ -44,7 +44,7 @@ func (c *Client) GetActions(projectID int) (Action, error) {
 			"project_id": projectID,
 		},
 	}
-	response, err := query.decodeAction()
+	response, err := query.decodeActions()
 	return response, err
 }
 
@@ -89,16 +89,32 @@ type ActionParams struct {
 	Params     map[string]string `json:"params"`
 }
 
-func (r *request) decodeAction() (Action, error) {
+// func (r *request) decodeAction() (Action, error) {
+// 	rsp, err := r.Client.Request(*r)
+// 	if err != nil {
+// 		return Action{}, err
+// 	}
+
+// 	body := struct {
+// 		JSONRPC string `json:"jsonrpc"`
+// 		ID      int    `json:"id"`
+// 		Result  Action `json:"result"`
+// 	}{}
+
+// 	err = json.NewDecoder(rsp.Body).Decode(&body)
+// 	return body.Result, err
+// }
+
+func (r *request) decodeActions() ([]Action, error) {
 	rsp, err := r.Client.Request(*r)
 	if err != nil {
-		return Action{}, err
+		return nil, err
 	}
 
 	body := struct {
-		JSONRPC string `json:"jsonrpc"`
-		ID      int    `json:"id"`
-		Result  Action `json:"result"`
+		JSONRPC string   `json:"jsonrpc"`
+		ID      int      `json:"id"`
+		Result  []Action `json:"result"`
 	}{}
 
 	err = json.NewDecoder(rsp.Body).Decode(&body)
